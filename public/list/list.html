@@ -1,1 +1,4 @@
 <p>My notes</p>
+<ul ng-repeat="note in notes">
+  <li><a href="#" ng-click="removeNote(note)">X</a>{{note.title}} : {{note.content}}
+</ul>

@@ -1,1 +1,6 @@
 <p>Adding a new note</p>
+<form>
+  <label for="title"><input type="text" id="title" ng-model="formData.title" />
+  <label for="content"><input type="textarea" id="content" ng-model="formData.content" />
+  <button type="submit" ng-click="createNote()">Create</button>
+</form>

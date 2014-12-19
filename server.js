@@ -18,11 +18,11 @@ app.use(bodyParser.json({type:'application/vnd.api+json'}));
 app.use(methodOverride());
 
 //
-//model 
+//model
 //
 
 var Note = mongoose.model('Note', {
-  title : String, 
+  title : String,
   content : String
 });
 
@@ -53,12 +53,18 @@ app.post('/api/notes', function(req, res){
 
 //deleting a note
 app.delete('/api/notes/:id', function(req, res){
+  console.log("aaaa");
   Note.remove({
-  	_id : req.body.id
+  	_id : req.params.id
   }, function(err, notes){
   	  if(err)
   	  	res.send(err);
-  	  res.json(notes);
+      //not very efficient, change that later...
+  	  Note.find(function(err, todos) {
+				if (err)
+					res.send(err)
+				res.json(todos);
+			});
   })
 });
 
