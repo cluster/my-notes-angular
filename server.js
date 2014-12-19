@@ -10,7 +10,7 @@ var methodOverride = require('method-override');
 //
 
 mongoose.connect('mongodb://localhost/my-notes');
-app.use(express.static(__dirname + 'public'));
+app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({'extended': 'true'}));
 app.use(bodyParser.json());
@@ -62,6 +62,9 @@ app.delete('/api/notes/:id', function(req, res){
   })
 });
 
+app.get('/', function(req, res){
+  res.sendfile('./public/index.html');
+});
 //
 //the app!
 //
